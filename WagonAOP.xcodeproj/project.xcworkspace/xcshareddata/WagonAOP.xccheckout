@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E56AF7C7-12B4-481A-B81F-82E77927EBA2</string>
+	<key>IDESourceControlProjectName</key>
+	<string>WagonAOP</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>EF3B408A36B04CEFCF4A540A8E19564B511A3323</key>
+		<string>https://github.com/Dronaldo17/BaDaGuner.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>WagonAOP/WagonAOP.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>EF3B408A36B04CEFCF4A540A8E19564B511A3323</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Dronaldo17/BaDaGuner.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EF3B408A36B04CEFCF4A540A8E19564B511A3323</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EF3B408A36B04CEFCF4A540A8E19564B511A3323</string>
+			<key>IDESourceControlWCCName</key>
+			<string>BaDaGuner</string>
+		</dict>
+	</array>
+</dict>
+</plist>
