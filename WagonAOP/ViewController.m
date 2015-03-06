@@ -50,6 +50,7 @@
         [invocation getReturnValue:&c];
         
         NSLog(@"after fun. sum = %d",c);
+#warning 这两个取消 不知道放到哪里合适了 现在是个Bug 请大家帮忙看看  现在如果这两个都放到这 第一次OK 第二次 就不对了  
         [WagonAOP removeInterceptorWithIdentifier:before];
         [WagonAOP removeInterceptorWithIdentifier:after];
     }];

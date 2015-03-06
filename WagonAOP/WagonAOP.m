@@ -298,8 +298,8 @@ DEF_SINGLETON(WagonAOP);
     if (![self respondsToSelector:aSelector])
     {
         SEL fSelNew = [[WagonAOP sharedInstance] extendedSelectorWithClass:[self class] selector:@selector(forwardingTargetForSelector:)];
-        // return objc_msgSend([WagonAOP sharedInstance], fSelNew);
-        return [[WagonAOP sharedInstance] performSelector:fSelNew];
+         return objc_msgSend([WagonAOP sharedInstance], fSelNew);
+//        return [[WagonAOP sharedInstance] performSelector:fSelNew];
     }
     
     [[WagonAOP sharedInstance] setCurrentObject:self];
