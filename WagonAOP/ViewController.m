@@ -1,4 +1,4 @@
-//
+///
 //  ViewController.m
 //  WagonAOP
 //
@@ -18,13 +18,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    UIButton * button = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+    [button setBackgroundColor:[UIColor blackColor]];
+    [button setTitle:@"AOPTest" forState:UIControlStateNormal];
+    [button setTitle:@"AOPTest" forState:UIControlStateHighlighted];
     
-    NSString * before = [WagonAOP interceptClass:[AOPTest class] beforeExecutingSelector:@selector(sumA:andB:)   usingBlock:^(NSInvocation *invocation) {
+    [button addTarget:self action:@selector(aopTest:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+    
+}
+-(void)aopTest:(id)sender
+{
+    __block NSString * before;
+    __block NSString * after;
+    before  = [WagonAOP interceptClass:[AOPTest class] beforeExecutingSelector:@selector(sumA:andB:)   usingBlock:^(NSInvocation *invocation) {
         int a = 3;
         int b = 4;
-
-//        [invocation setArgument: &myString atIndex: 2];为什么index从2开始 ，原因为：0 1 两个参数已经被target 和selector占用。
+        
+        //        [invocation setArgument: &myString atIndex: 2];为什么index从2开始 ，原因为：0 1 两个参数已经被target 和selector占用。
         
         [invocation setArgument:&a atIndex:2];
         [invocation setArgument:&b atIndex:3];
@@ -33,33 +44,19 @@
     }];
     NSLog(@"before is %@",before);
     
-    NSString * after = [WagonAOP interceptClass:[AOPTest class] afterExecutingSelector:@selector(sumA:andB:) usingBlock:^(NSInvocation *invocation) {
+    after = [WagonAOP interceptClass:[AOPTest class] afterExecutingSelector:@selector(sumA:andB:) usingBlock:^(NSInvocation *invocation) {
         int c;
         
-        //        [invocation setArgument: &myString atIndex: 2];为什么index从2开始 ，原因为：0 1 两个参数已经被target 和selector占用。
-        
-//        [invocation getArgument:&a atIndex:2];
-//        [invocation getArgument:&b atIndex:3];
         [invocation getReturnValue:&c];
         
         NSLog(@"after fun. sum = %d",c);
+        [WagonAOP removeInterceptorWithIdentifier:before];
+        [WagonAOP removeInterceptorWithIdentifier:after];
     }];
-     NSLog(@"after is %@",after);
-    
-//    NSString * instead = [WagonAOP interceptClass:[AOPTest class] insteadExecutingSelector:@selector(sumA:andB:) usingBlock:^(NSInvocation *invocation) {
-//        int c = 99999999;
-//       
-//        NSLog(@"instead fun.c is %d",c);
-//        
-//    }];
-//     NSLog(@"instead is %@",instead);
+    NSLog(@"after is %@",after);
     
     AOPTest * test = [AOPTest alloc];
     [test sumA:1 andB:2];
-    
-    [WagonAOP removeInterceptorWithIdentifier:before];
-    [WagonAOP removeInterceptorWithIdentifier:after];
-       
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,3 +65,4 @@
 }
 
 @end
+
